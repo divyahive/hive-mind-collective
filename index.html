@@ -64,7 +64,7 @@
 
   /* ---- Hexagon utility ---- */
   .hex {
-    clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%);
+    clip-path: polygon(14% 4%, 86% 4%, 100% 50%, 86% 96%, 14% 96%, 0% 50%);
   }
 
   /* ---- Hero ---- */
@@ -126,16 +126,17 @@
 
   /* ---- Pillars (hexagons) ---- */
   .pillars {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1.6rem 1.2rem;
   }
   .pillar { text-align: center; }
   .pillar .hex {
-    width: 118px; height: 118px; margin: 0 auto 0.9rem;
+    width: 142px; height: 142px; margin: 0 auto 0.9rem;
     display: flex; align-items: center; justify-content: center;
     background: var(--gold);
     font-family: var(--font-display); font-weight: 700; color: var(--teal-dark);
-    font-size: 0.92rem; padding: 0 0.6rem; text-align: center;
+    font-size: 0.8rem; line-height: 1.25; text-wrap: balance;
+    padding: 0 1.5rem; text-align: center;
   }
   .pillar:nth-child(2) .hex { background: var(--teal); color: var(--gold-pale); }
   .pillar:nth-child(3) .hex { background: var(--dusty); color: var(--teal-dark); }

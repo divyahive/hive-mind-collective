@@ -113,6 +113,21 @@
   .band-teal h2, .band-teal h3 { color: #fff; }
   .band-teal .section-head p { color: var(--dusty); }
 
+  .band-gold {
+    position: relative;
+    overflow: hidden;
+    background: var(--gold-pale);
+    border-top: 4px solid var(--gold-deep);
+    border-bottom: 4px solid var(--gold-deep);
+  }
+  .band-gold .wrap { position: relative; z-index: 2; }
+  .band-gold .section-head .eyebrow { color: var(--teal-dark); }
+  .band-gold .section-head .eyebrow::before { background: var(--teal); }
+  .band-gold .honeycomb-bg {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.35;
+  }
+
   /* ---- Mission ---- */
   .mission-quote {
     font-family: var(--font-display);
@@ -198,6 +213,22 @@
     white-space: nowrap;
   }
   .rsvp:hover { background: var(--gold-deep); }
+  .event-badge {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 0.28rem 0.6rem; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge-hmc { background: var(--dusty-pale); color: var(--teal-dark); }
+  .badge-member { background: #fff; color: #8A5A0F; border: 1px solid var(--gold-deep); }
+  .events-table tr.event-hmc td:first-child { border-left: 4px solid var(--teal); }
+  .events-table tr.event-member td:first-child { border-left: 4px solid var(--gold-deep); }
+  .events-cta {
+    margin: 1.4rem 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .events-cta a { font-weight: 700; }
 
   /* ---- Members ---- */
   .members-grid {
@@ -352,12 +383,20 @@
   </div>
 </section>
 
-<section class="band-cream" id="events">
+<section class="band-gold" id="events">
+  <svg class="honeycomb-bg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="hexPattern" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 55,15 55,39 30,52 5,39 5,15" fill="none" stroke="#B9791C" stroke-width="1.3"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hexPattern)"/>
+  </svg>
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Calendar</div>
       <h2>Upcoming gatherings.</h2>
-      <p>Monthly meetings at NextSpace in downtown Santa Cruz. RSVP so we can plan for the room.</p>
+      <p>Our monthly meetings, plus workshops, sales, and events hosted by members' own businesses — this is where we show up for each other. RSVP so hosts can plan for the room.</p>
     </div>
 
     <div class="events-table-wrap">
@@ -365,6 +404,7 @@
         <thead>
           <tr>
             <th>Event</th>
+            <th>Hosted By</th>
             <th>Date</th>
             <th>Time</th>
             <th>Location</th>
@@ -372,29 +412,33 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="event-hmc">
             <td data-label="Event">August Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
             <td data-label="Date">Aug 26</td>
             <td data-label="Time">6:30 PM</td>
             <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
             <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=August+Meeting" target="_blank" rel="noopener">RSVP</a></td>
           </tr>
-          <tr>
+          <tr class="event-hmc">
             <td data-label="Event">September Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
             <td data-label="Date">Sep 30</td>
             <td data-label="Time">6:30 PM</td>
             <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
             <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=September+Meeting" target="_blank" rel="noopener">RSVP</a></td>
           </tr>
-          <tr>
+          <tr class="event-hmc">
             <td data-label="Event">October Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
             <td data-label="Date">Oct 28</td>
             <td data-label="Time">6:30 PM</td>
             <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
             <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=October+Meeting" target="_blank" rel="noopener">RSVP</a></td>
           </tr>
-          <tr>
+          <tr class="event-hmc">
             <td data-label="Event">November Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
             <td data-label="Date">Nov 18</td>
             <td data-label="Time">6:30 PM</td>
             <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
@@ -403,6 +447,8 @@
         </tbody>
       </table>
     </div>
+
+    <p class="events-cta">Running a workshop, sale, or event for your business? Email <a href="mailto:divya@hiveconsultingservices.com?subject=Event%20for%20HMC%20Calendar">divya@hiveconsultingservices.com</a> with the details and we'll add it here for the whole collective to support.</p>
   </div>
 </section>
 

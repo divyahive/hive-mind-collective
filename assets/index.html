@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hive Mind Collective — Empowered Women Empowering Women</title>
+<meta name="description" content="Hive Mind Collective is a community of women entrepreneurs in Santa Cruz who grow together, share resources, and support one another's businesses and well-being.">
+<link rel="icon" href="assets/logo.jpg">
+<style>
+  :root {
+    --gold: #F2C230;
+    --gold-deep: #DDA61C;
+    --gold-pale: #FBEBB8;
+    --teal: #1B6E69;
+    --teal-dark: #0F4643;
+    --dusty: #AFD0CE;
+    --dusty-pale: #E3F0EF;
+    --cream: #FBF6EA;
+    --ink: #221F1A;
+    --ink-soft: #5B564B;
+
+    --font-display: ui-rounded, "SF Pro Rounded", "Century Gothic", "URW Gothic", Futura, "Trebuchet MS", sans-serif;
+    --font-body: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--teal); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--teal-dark);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ---- Header ---- */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(251,246,234,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(27,110,105,0.14);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 0;
+  }
+  .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .brand img { width: 40px; height: 40px; border-radius: 50%; }
+  .brand span { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--teal-dark); }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.92rem; font-weight: 600; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-toggle { display: none; }
+
+  /* ---- Hexagon utility ---- */
+  .hex {
+    clip-path: polygon(14% 4%, 86% 4%, 100% 50%, 86% 96%, 14% 96%, 0% 50%);
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 4.5rem 0 5rem;
+    background:
+      radial-gradient(60% 55% at 82% 8%, var(--gold-pale) 0%, transparent 70%),
+      var(--cream);
+  }
+  .hero .wrap { position: relative; z-index: 2; display: grid; gap: 1.1rem; max-width: 760px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal);
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--gold-deep); display: inline-block; }
+  .hero h1 { font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.1; }
+  .hero p.lede { font-size: 1.12rem; color: var(--ink-soft); max-width: 56ch; }
+  .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 0.4rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.75rem 1.5rem; border-radius: 999px;
+    font-weight: 700; font-size: 0.96rem; text-decoration: none;
+    border: 2px solid transparent;
+  }
+  .btn-primary { background: var(--teal); color: var(--gold-pale); }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-ghost { border-color: var(--teal); color: var(--teal); }
+  .btn-ghost:hover { background: var(--dusty-pale); }
+
+  .honeycomb {
+    position: absolute; right: -60px; top: -40px; width: 320px; height: 320px;
+    opacity: 0.55; z-index: 1; pointer-events: none;
+  }
+
+  /* ---- Section shell ---- */
+  section { padding: 4.2rem 0; }
+  .section-head { max-width: 640px; margin: 0 0 2.4rem; }
+  .section-head .eyebrow { margin-bottom: 0.6rem; }
+  .section-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.2rem); }
+  .section-head p { color: var(--ink-soft); margin-top: 0.6rem; }
+  .band-cream { background: var(--cream); }
+  .band-teal { background: var(--teal-dark); color: var(--dusty-pale); }
+  .band-teal h2, .band-teal h3 { color: #fff; }
+  .band-teal .section-head p { color: var(--dusty); }
+
+  .band-gold {
+    position: relative;
+    overflow: hidden;
+    background: var(--gold-pale);
+    border-top: 4px solid var(--gold-deep);
+    border-bottom: 4px solid var(--gold-deep);
+  }
+  .band-gold .wrap { position: relative; z-index: 2; }
+  .band-gold .section-head .eyebrow { color: var(--teal-dark); }
+  .band-gold .section-head .eyebrow::before { background: var(--teal); }
+  .band-gold .honeycomb-bg {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.35;
+  }
+
+  /* ---- Mission ---- */
+  .mission-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    color: var(--teal-dark);
+    max-width: 760px;
+    line-height: 1.4;
+    border-left: 4px solid var(--gold);
+    padding-left: 1.3rem;
+  }
+
+  /* ---- Pillars (hexagons) ---- */
+  .pillars {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.6rem 1.2rem;
+  }
+  .pillar { text-align: center; }
+  .pillar .hex {
+    width: 142px; height: 142px; margin: 0 auto 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--gold);
+    font-family: var(--font-display); font-weight: 700; color: var(--teal-dark);
+    font-size: 0.8rem; line-height: 1.25; text-wrap: balance;
+    padding: 0 1.5rem; text-align: center;
+  }
+  .pillar:nth-child(2) .hex { background: var(--teal); color: var(--gold-pale); }
+  .pillar:nth-child(3) .hex { background: var(--dusty); color: var(--teal-dark); }
+  .pillar:nth-child(4) .hex { background: var(--teal); color: var(--gold-pale); }
+  .pillar:nth-child(5) .hex { background: var(--gold); color: var(--teal-dark); }
+  .pillar p { font-size: 0.86rem; color: var(--ink-soft); margin: 0; }
+
+  /* ---- Two-column lists (activities / what to expect) ---- */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .list-card h3 { font-size: 1.15rem; margin-bottom: 0.9rem; }
+  .list-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+  .list-card li {
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    font-size: 0.95rem;
+  }
+  .list-card li::before {
+    content: "⬡"; color: var(--gold-deep); flex-shrink: 0; margin-top: 0.05rem;
+  }
+  .band-teal .list-card li::before { color: var(--gold); }
+
+  /* ---- Events ---- */
+  .events-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(15,70,67,0.05), 0 10px 24px rgba(15,70,67,0.06);
+  }
+  .events-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 0.92rem;
+    min-width: 560px;
+  }
+  .events-table th {
+    background: var(--teal-dark);
+    color: #fff;
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    padding: 0.85rem 1.1rem;
+  }
+  .events-table td {
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--dusty-pale);
+  }
+  .events-table tr:last-child td { border-bottom: none; }
+  .events-table tr:nth-child(even) td { background: var(--cream); }
+  .events-table td:first-child { font-weight: 700; color: var(--teal-dark); }
+  .rsvp {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--teal-dark);
+    font-weight: 700; font-size: 0.82rem;
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .rsvp:hover { background: var(--gold-deep); }
+  .event-badge {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 0.28rem 0.6rem; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge-hmc { background: var(--dusty-pale); color: var(--teal-dark); }
+  .badge-member { background: #fff; color: #8A5A0F; border: 1px solid var(--gold-deep); }
+  .events-table tr.event-hmc td:first-child { border-left: 4px solid var(--teal); }
+  .events-table tr.event-member td:first-child { border-left: 4px solid var(--gold-deep); }
+  .events-cta {
+    margin: 1.4rem 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .events-cta a { font-weight: 700; }
+
+  /* ---- Members ---- */
+  .members-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.6rem;
+  }
+  .member {
+    background: #fff; border-radius: 18px;
+    padding: 1.4rem 1.2rem 1.6rem;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(15,70,67,0.05), 0 10px 24px rgba(15,70,67,0.06);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .member .photo {
+    width: 92px; height: 92px; border-radius: 50%;
+    object-fit: cover; border: 3px solid var(--dusty);
+    margin-bottom: 0.9rem;
+  }
+  .member .initials {
+    width: 92px; height: 92px; border-radius: 50%;
+    margin-bottom: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.5rem;
+    color: var(--teal-dark);
+  }
+  .member h3 { font-size: 1.02rem; margin-bottom: 0.15rem; }
+  .member .role { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 0.7rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; margin-bottom: 0.8rem; }
+  .tag {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.02em;
+    background: var(--dusty-pale); color: var(--teal-dark);
+    padding: 0.28rem 0.6rem; border-radius: 999px;
+  }
+  .member a.site {
+    font-size: 0.8rem; font-weight: 700; text-decoration: none;
+    color: var(--teal); margin-top: auto;
+  }
+  .member a.site:hover { text-decoration: underline; }
+  .photo-note {
+    margin-top: 2.2rem; font-size: 0.82rem; color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* ---- Footer ---- */
+  footer { padding: 2.6rem 0 3rem; }
+  .footer-row {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid rgba(27,110,105,0.16);
+    padding-top: 1.6rem;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 0.6rem; }
+  .footer-brand img { width: 32px; height: 32px; border-radius: 50%; }
+  .footer-brand span { font-family: var(--font-display); font-weight: 700; color: var(--teal-dark); }
+  footer .meta { font-size: 0.82rem; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .two-col { grid-template-columns: 1fr; gap: 2.2rem; }
+    .honeycomb { display: none; }
+  }
+
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="assets/logo.jpg" alt="Hive Mind Collective logo">
+      <span>Hive Mind Collective</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#expect">What to Expect</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#members">Meet the Collective</a></li>
+    </ul>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <svg class="honeycomb" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="none" stroke="#DDA61C" stroke-width="1.4" opacity="0.5">
+      <polygon points="60,10 100,10 120,45 100,80 60,80 40,45"/>
+      <polygon points="100,10 140,10 160,45 140,80 100,80 80,45"/>
+      <polygon points="40,80 80,80 100,115 80,150 40,150 20,115"/>
+      <polygon points="80,80 120,80 140,115 120,150 80,150 60,115"/>
+      <polygon points="120,80 160,80 180,115 160,150 120,150 100,115"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Santa Cruz, CA</div>
+    <h1>Empowered Women Empowering Women.</h1>
+    <p class="lede">Hive Mind Collective is a community of women entrepreneurs in Santa Cruz who grow together, learn from one another's journeys, and access the resources that strengthen both their businesses and their well-being.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="#mission">Learn more</a>
+    </div>
+  </div>
+</section>
+
+<section class="band-cream" id="mission">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Our Mission</div>
+    </div>
+    <p class="mission-quote">"Our mission is to empower women entrepreneurs in Santa Cruz by creating a collective where members can grow together, learn from one another's journeys, and access resources that strengthen their businesses and their well-being."</p>
+  </div>
+</section>
+
+<section class="band-cream">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How We Show Up</div>
+      <h2>Five things this collective is built on.</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="hex">Connection</div><p>Real relationships between women who understand the entrepreneurial road.</p></div>
+      <div class="pillar"><div class="hex">Collective Problem Solving</div><p>Bringing shared challenges to a room built to work through them.</p></div>
+      <div class="pillar"><div class="hex">Collaboration</div><p>Co-creating opportunities instead of building alone.</p></div>
+      <div class="pillar"><div class="hex">Learning &amp; Insight Exchange</div><p>Trading hard-won knowledge across very different businesses.</p></div>
+      <div class="pillar"><div class="hex">Support &amp; Encouragement</div><p>Celebrating wins and navigating challenges with honesty and care.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-teal" id="expect">
+  <div class="wrap two-col">
+    <div class="list-card">
+      <h3>What we do together</h3>
+      <ul>
+        <li>Workshops, events, and retreats</li>
+        <li>Resource-sharing across members' businesses</li>
+        <li>Business education</li>
+        <li>An ongoing membership community</li>
+        <li>Partnerships and sponsorships</li>
+      </ul>
+    </div>
+    <div class="list-card">
+      <h3>What to expect as a member</h3>
+      <ul>
+        <li>Monthly gatherings</li>
+        <li>Member spotlights</li>
+        <li>Resource exchanges</li>
+        <li>Discussion prompts</li>
+        <li>Accountability circles</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band-gold" id="events">
+  <svg class="honeycomb-bg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="hexPattern" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 55,15 55,39 30,52 5,39 5,15" fill="none" stroke="#B9791C" stroke-width="1.3"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hexPattern)"/>
+  </svg>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Calendar</div>
+      <h2>Upcoming gatherings.</h2>
+      <p>Our monthly meetings, plus workshops, sales, and events hosted by members' own businesses — this is where we show up for each other. RSVP so hosts can plan for the room.</p>
+    </div>
+
+    <div class="events-table-wrap">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Hosted By</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="event-hmc">
+            <td data-label="Event">August Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
+            <td data-label="Date">Aug 26</td>
+            <td data-label="Time">6:30 PM</td>
+            <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
+            <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=August+Meeting" target="_blank" rel="noopener">RSVP</a></td>
+          </tr>
+          <tr class="event-hmc">
+            <td data-label="Event">September Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
+            <td data-label="Date">Sep 30</td>
+            <td data-label="Time">6:30 PM</td>
+            <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
+            <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=September+Meeting" target="_blank" rel="noopener">RSVP</a></td>
+          </tr>
+          <tr class="event-hmc">
+            <td data-label="Event">October Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
+            <td data-label="Date">Oct 28</td>
+            <td data-label="Time">6:30 PM</td>
+            <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
+            <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=October+Meeting" target="_blank" rel="noopener">RSVP</a></td>
+          </tr>
+          <tr class="event-hmc">
+            <td data-label="Event">November Meeting</td>
+            <td data-label="Hosted By"><span class="event-badge badge-hmc">HMC Meeting</span></td>
+            <td data-label="Date">Nov 18</td>
+            <td data-label="Time">6:30 PM</td>
+            <td data-label="Location">NextSpace – Downtown Santa Cruz</td>
+            <td><a class="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfogFqRYY5Rb3bVHbkIzFMI3f2W175FvlS36p2qwrmdG41B6w/viewform?usp=pp_url&entry.1380112593=November+Meeting" target="_blank" rel="noopener">RSVP</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="events-cta">Running a workshop, sale, or event for your business? Email <a href="mailto:divya@hiveconsultingservices.com?subject=Event%20for%20HMC%20Calendar">divya@hiveconsultingservices.com</a> with the details and we'll add it here for the whole collective to support.</p>
+  </div>
+</section>
+
+<section class="band-cream" id="members">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Meet the Collective</div>
+      <h2>The women building this together.</h2>
+      <p>A founding circle of entrepreneurs across health, real estate, law, design, art, and more.</p>
+    </div>
+
+    <div class="members-grid">
+
+      <div class="member">
+        <img class="photo" src="assets/photos/anne.jpg" alt="Anne Chiaramonte">
+        <h3>Anne Chiaramonte</h3>
+        <div class="role">Arrive Reproductive Medicine</div>
+        <div class="tags"><span class="tag">Acupuncture</span><span class="tag">Women's Health</span><span class="tag">Hormone Education</span></div>
+        <a class="site" href="https://arrivereproductivemedicine.com" target="_blank" rel="noopener">arrivereproductivemedicine.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/stephanie.jpg" alt="Stephanie Kobesky">
+        <h3>Stephanie Kobesky</h3>
+        <div class="role">KP Family Law</div>
+        <div class="tags"><span class="tag">Family Law</span><span class="tag">AI &amp; Automation</span></div>
+        <a class="site" href="https://kpfamlaw.com" target="_blank" rel="noopener">kpfamlaw.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/amber.jpg" alt="Amber Grewer">
+        <h3>Amber Grewer</h3>
+        <div class="role">Amber Grewer Real Estate</div>
+        <div class="tags"><span class="tag">Residential Real Estate</span></div>
+        <a class="site" href="https://ambergrewerrealestate.com" target="_blank" rel="noopener">ambergrewerrealestate.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/karen.jpeg" alt="Karen Moeller">
+        <h3>Karen Moeller</h3>
+        <div class="role">Salt Studios</div>
+        <div class="tags"><span class="tag">Fitness &amp; Wellness</span><span class="tag">Entrepreneurship</span></div>
+        <a class="site" href="https://liveinsalt.com" target="_blank" rel="noopener">liveinsalt.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/marcela.jpg" alt="Marcela Simonkova">
+        <h3>Marcela Simonkova</h3>
+        <div class="role">Real Estate &amp; Marketing</div>
+        <div class="tags"><span class="tag">Real Estate</span><span class="tag">Marketing</span></div>
+        <a class="site" href="https://marcelasimonkova.com" target="_blank" rel="noopener">marcelasimonkova.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/claudia.jpg" alt="Claudia Manrique">
+        <h3>Claudia Manrique</h3>
+        <div class="role">Nonprofit Finance &amp; Community Advocacy</div>
+        <div class="tags"><span class="tag">Nonprofit Finance</span><span class="tag">Bilingual Education</span></div>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/michelle.jpg" alt="Michelle Lisac">
+        <h3>Michelle Lisac</h3>
+        <div class="role">Michelle Lisac Interior Design</div>
+        <div class="tags"><span class="tag">Interior Design</span><span class="tag">Architecture</span></div>
+        <a class="site" href="https://michellelisacinteriordesign.com" target="_blank" rel="noopener">michellelisacinteriordesign.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/janet.jpg" alt="Janet Huh">
+        <h3>Janet Huh</h3>
+        <div class="role">Psychotherapy &amp; Life Coaching</div>
+        <div class="tags"><span class="tag">Psychotherapy</span><span class="tag">Life Coaching</span><span class="tag">Writing</span></div>
+        <a class="site" href="https://instagram.com/kyopomom" target="_blank" rel="noopener">@kyopomom</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/joan.jpeg" alt="Joan Bogart">
+        <h3>Joan Bogart</h3>
+        <div class="role">Visual Artist</div>
+        <div class="tags"><span class="tag">Visual Art</span><span class="tag">Workshops</span></div>
+        <a class="site" href="https://joanpbogart.com" target="_blank" rel="noopener">joanpbogart.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/emma.jpg" alt="Emma Tipping">
+        <h3>Emma Tipping</h3>
+        <div class="role">Art Educator &amp; Designer</div>
+        <div class="tags"><span class="tag">Art Education</span><span class="tag">Branding &amp; Design</span></div>
+        <a class="site" href="https://emmatipping.com" target="_blank" rel="noopener">emmatipping.com</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/grace.jpeg" alt="Grace St. Clair">
+        <h3>Grace St. Clair</h3>
+        <div class="role">Food, Beverage &amp; Entertaining</div>
+        <div class="tags"><span class="tag">Food &amp; Beverage</span><span class="tag">Community Building</span></div>
+        <a class="site" href="https://instagram.com/BigBiteSC" target="_blank" rel="noopener">@BigBiteSC</a>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/karina.jpeg" alt="Karina Scarborough">
+        <h3>Karina Scarborough</h3>
+        <div class="role">Philanthropy &amp; Community</div>
+        <div class="tags"><span class="tag">Philanthropy</span><span class="tag">Community Building</span><span class="tag">Garden Design</span></div>
+      </div>
+
+      <div class="member">
+        <img class="photo" src="assets/photos/divya.jpg" alt="Divya Sharma">
+        <h3>Divya Sharma</h3>
+        <div class="role">Hive Consulting Services</div>
+        <div class="tags"><span class="tag">Business Consulting</span><span class="tag">Healthcare Revenue Cycle</span><span class="tag">Philanthropy</span></div>
+        <a class="site" href="https://hiveconsultingservices.com" target="_blank" rel="noopener">hiveconsultingservices.com</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <img src="assets/logo.jpg" alt="Hive Mind Collective logo">
+      <span>Hive Mind Collective</span>
+    </div>
+    <div class="meta">Santa Cruz, CA · Empowered Women Empowering Women</div>
+  </div>
+</footer>
+
+</body>
+</html>
